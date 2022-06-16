@@ -1,25 +1,20 @@
-import * as act from "./action_types"
+import * as act from "./actionTypes"
 
-interface Action {
+export interface Action {
     type: string,
-    payload: {
-        description: string,
-        resolved: boolean,
-    }
+    payload: any
 }
 
 export const addItem = (description: string): Action => ({
     type: act.ADDED_TO_CART,
     payload: {
         description: description,
-        resolved: false,
     }
 })
 
-export const removeItem = (description: string): Action => ({
+export const removeItem = (id: number): Action => ({
     type: act.REMOVED_FROM_CART,
     payload: {
-        description: description,
-        resolved: true,
+        id: id,
     }
 })
