@@ -1,2 +1,2 @@
-import store from "./store"
-console.log("store");
+import reducer from "./reducer"
+console.log(reducer);
