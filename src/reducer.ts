@@ -8,7 +8,7 @@ interface Order {
 }
 
 
-export function reducer(state: Array<Order> = [], action: Action) {
+export default function reducer(state: Array<Order> = [], action: Action) {
     if (action.type == act.ADDED_TO_CART)
         return [
             ...state,
