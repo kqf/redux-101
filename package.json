@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
   "devDependencies": {
+    "jest": "^28.1.1",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.3",
     "webpack": "^5.73.0",
