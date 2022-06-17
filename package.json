@@ -4,11 +4,12 @@
   "description": "Redux 101",
   "main": "index.ts",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js"
+    "start": "webpack-dev-server --config ./webpack.config.js",
+    "test": "mocha 'tests/**/*.ts'"
   },
   "devDependencies": {
-    "jest": "^28.1.1",
-    "ts-jest": "^28.0.5",
+    "@types/mocha": "^9.1.1",
+    "mocha": "^10.0.0",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.3",
     "webpack": "^5.73.0",
