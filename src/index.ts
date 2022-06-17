@@ -1,1 +1,2 @@
-console.log("Hello World!");
+import reducer from "./reducer"
+console.log(reducer);
