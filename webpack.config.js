@@ -9,5 +9,21 @@ module.exports = {
   devServer: {
     port: 9000
   },
-  mode: "development"
+  mode: "development",
+  resolve: {
+    extensions: [".ts", ".js"]
+  },
+  module: {
+    rules: [
+        {
+            test: /\.(ts|tsx)?$/,
+            include: path.resolve(__dirname, 'src/'),
+            use: [
+                {
+                    loader: 'ts-loader'
+                }
+            ]
+        },
+    ]
+},
 };
