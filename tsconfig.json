@@ -8,5 +8,5 @@
     "declaration": true,
     "moduleResolution": "node"
   },
-  "include": ["./src", "./tests"],
+  "include": ["./src", "./tests/**/*.ts"],
 }
