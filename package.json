@@ -5,8 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js",
-    "test": "mocha"
-  },
+    "test": "nyc --reporter=text mocha"
+  }
+  ,
   "devDependencies": {
     "@types/mocha": "^9.1.1",
     "mocha": "^10.0.0",
