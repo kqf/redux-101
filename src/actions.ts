@@ -22,6 +22,7 @@ export const removeItem = (id: number): Action => ({
 export const dispatchItem = (id: number): Action => ({
     type: act.DISPATCH_ORDER,
     payload: {
+        id: id,
         dispatched: true,
     }
 })
