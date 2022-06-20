@@ -4,7 +4,7 @@ import * as act from "./actionTypes"
 interface Order {
     id: number,
     description: string,
-    resolved: boolean,
+    dispatched: boolean,
 }
 
 
@@ -15,7 +15,7 @@ export default function reducer(state: Array<Order> = [], action: Action) {
             {
                 id: state.length,
                 description: action.payload.description,
-                resolved: false,
+                dispatched: false,
             }
         ]
 
