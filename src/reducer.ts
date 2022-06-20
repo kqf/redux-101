@@ -4,7 +4,7 @@ import * as act from "./actionTypes"
 interface Order {
     id: number,
     description: string,
-    resolved: boolean,
+    dispatched: boolean,
 }
 
 
@@ -15,11 +15,19 @@ export default function reducer(state: Array<Order> = [], action: Action) {
             {
                 id: state.length,
                 description: action.payload.description,
-                resolved: false,
+                dispatched: false,
             }
-        ]
+        ];
 
     if (action.type == act.ADDED_TO_CART)
-        return state.filter(order => order.id !== action.payload.id)
+        return state.filter(order => order.id !== action.payload.id);
+
+    if (action.type == act.DISPATCH_ORDER)
+        return state.map(order => {
+            order.id !== action.payload.id ? order : {
+                ...order,
+                dispatched: action.payload.dispatched
+            }
+        });
 
 }
