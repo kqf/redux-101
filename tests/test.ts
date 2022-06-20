@@ -7,9 +7,9 @@ describe('Store', function () {
         console.log("Before the actions");
         console.log(store.getState());
         store.dispatch(addItem("test item"));
-        console.log(store.getState());
+        console.log("Before dispatch", store.getState());
         store.dispatch(dispatchItem(0))
-        console.log(store.getState());
+        console.log("After dispatch", store.getState());
         store.dispatch(removeItem(0));
         console.log("After remove item")
         console.log(store.getState());
