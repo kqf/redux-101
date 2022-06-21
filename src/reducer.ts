@@ -22,7 +22,7 @@ export default function reducer(state: Array<Order> = [], action: Action) {
     if (action.type == act.ADDED_TO_CART)
         return state.filter(order => order.id !== action.payload.id);
 
-    if (action.type == act.DISPATCH_ORDER)
+    if (action.type == act.DISPATCHED_ORDER)
         return state.map(order => {
             order.id !== action.payload.id ? order : {
                 ...order,

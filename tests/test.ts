@@ -1,16 +1,16 @@
 import "mocha";
 import store from "../src/store";
-import { addItem, dispatchItem, removeItem } from "../src/actions";
+import { addedItem, dispatchedItem, removedItem } from "../src/actions";
 
 describe('Store', function () {
     it("dispatches the event", () => {
         console.log("Before the actions");
         console.log(store.getState());
-        store.dispatch(addItem("test item"));
+        store.dispatch(addedItem("test item"));
         console.log("Before dispatch", store.getState());
-        store.dispatch(dispatchItem(0))
+        store.dispatch(dispatchedItem(0))
         console.log("After dispatch", store.getState());
-        store.dispatch(removeItem(0));
+        store.dispatch(removedItem(0));
         console.log("After remove item")
         console.log(store.getState());
     });

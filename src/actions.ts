@@ -5,24 +5,23 @@ export interface Action {
     payload: any
 }
 
-export const addItem = (description: string): Action => ({
+export const addedItem = (description: string): Action => ({
     type: act.ADDED_TO_CART,
     payload: {
         description: description,
     }
 })
 
-export const removeItem = (id: number): Action => ({
+export const removedItem = (id: number): Action => ({
     type: act.REMOVED_FROM_CART,
     payload: {
         id: id,
     }
 })
 
-export const dispatchItem = (id: number): Action => ({
-    type: act.DISPATCH_ORDER,
+export const dispatchedItem = (id: number): Action => ({
+    type: act.DISPATCHED_ORDER,
     payload: {
         id: id,
-        dispatched: true,
     }
 })
