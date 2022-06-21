@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js",
     "test": "nyc --reporter=text mocha"
-  }
-  ,
+  },
   "devDependencies": {
     "@types/mocha": "^9.1.1",
     "mocha": "^10.0.0",
@@ -20,6 +19,7 @@
     "webpack-dev-server": "^4.9.2"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.2",
     "redux": "^4.2.0"
   }
 }
