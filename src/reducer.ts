@@ -23,12 +23,12 @@ export default function reducer(state: Array<Order> = [], action: Action) {
         return state.filter(order => order.id !== action.payload.id);
 
     if (action.type == act.DISPATCHED_ORDER)
-        return state.map(order => {
+        return state.map(order => (
             order.id !== action.payload.id ? order : {
                 ...order,
-                dispatched: action.payload.dispatched
+                dispatched: true
             }
-        });
+        ));
 
     return state;
 
