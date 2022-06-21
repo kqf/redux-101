@@ -1,5 +1,5 @@
-import { Action } from "./actions"
-import * as act from "./actionTypes"
+import { Action } from "../actions"
+import * as act from "../actionTypes"
 
 interface Order {
     id: number,
