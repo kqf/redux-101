@@ -1,4 +1,4 @@
-import { createAction, createReducer } from "@reduxjs/toolkit"
+import { createAction, createReducer, createSlice } from "@reduxjs/toolkit"
 
 interface Order {
     id: number,
@@ -11,31 +11,31 @@ export interface Action {
     payload: any
 }
 
-export const addedItem = createAction<{ description: string }>("itemAdded");
-export const removedItem = createAction<{ id: number }>("itemRemoved");
-export const dispatchedItem = createAction<{ id: number }>("itemDispatched");
+const slice = createSlice({
+        name: "orders",
+        initialState: [] as Array<Order>,
+        reducers: {
+        addedItem: (orders: Array<Order>, action: Action) => {
+            orders.push({
+                id: orders.length,
+                description: action.payload.description,
+                dispatched: false,
 
+            });
+        },
+        dispatchedItem: (orders: Array<Order>, action: Action) => {
+            const index: number = orders.findIndex(
+                order => order.id === action.payload.id
+            )
+            orders[index].dispatched = true;
+        },
+        removedItem: (orders: Array<Order>, action: Action) => {
+            return orders.filter(order => order.id !== action.payload.id);
+        }
 
-
-const reducer = createReducer([] as Array<Order>, {
-    [addedItem.type]: (orders: Array<Order>, action: Action) => {
-        orders.push({
-            id: orders.length,
-            description: action.payload.description,
-            dispatched: false,
-
-        });
-    },
-    [dispatchedItem.type]: (orders: Array<Order>, action: Action) => {
-        const index: number = orders.findIndex(
-            order => order.id === action.payload.id
-        )
-        orders[index].dispatched = true;
-    },
-    [removedItem.type]: (orders: Array<Order>, action: Action) => {
-        return orders.filter(order => order.id !== action.payload.id);
     }
-
 });
 
-export default reducer;
+
+export const {addedItem, dispatchedItem, removedItem} = slice.actions;
+export default slice.reducer;
