@@ -6,16 +6,19 @@ interface Order {
     dispatched: boolean,
 }
 
-export interface Action {
+interface Action<T> {
     type: string,
-    payload: any
+    payload: T
 }
 
 const slice = createSlice({
-        name: "orders",
-        initialState: [] as Array<Order>,
-        reducers: {
-        addedItem: (orders: Array<Order>, action: Action) => {
+    name: "orders",
+    initialState: [] as Array<Order>,
+    reducers: {
+        addedItem: (
+            orders: Array<Order>,
+            action: Action<{ description: string }>
+        ) => {
             orders.push({
                 id: orders.length,
                 description: action.payload.description,
@@ -23,13 +26,19 @@ const slice = createSlice({
 
             });
         },
-        dispatchedItem: (orders: Array<Order>, action: Action) => {
+        dispatchedItem: (
+            orders: Array<Order>,
+            action: Action<{ id: number }>
+        ) => {
             const index: number = orders.findIndex(
                 order => order.id === action.payload.id
             )
             orders[index].dispatched = true;
         },
-        removedItem: (orders: Array<Order>, action: Action) => {
+        removedItem: (
+            orders: Array<Order>,
+            action: Action<{ id: number }>
+        ) => {
             return orders.filter(order => order.id !== action.payload.id);
         }
 
@@ -37,5 +46,5 @@ const slice = createSlice({
 });
 
 
-export const {addedItem, dispatchedItem, removedItem} = slice.actions;
+export const { addedItem, dispatchedItem, removedItem } = slice.actions;
 export default slice.reducer;
