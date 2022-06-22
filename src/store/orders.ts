@@ -33,11 +33,7 @@ const reducer = createReducer([] as Array<Order>, {
         orders[index].dispatched = true;
     },
     [removedItem.type]: (orders: Array<Order>, action: Action) => {
-        const index: number = orders.findIndex(
-            order => order.id === action.payload.id
-        );
-
-        orders.splice(index, 1);
+        return orders.filter(order => order.id !== action.payload.id);
     }
 
 });
