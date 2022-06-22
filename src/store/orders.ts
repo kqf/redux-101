@@ -1,4 +1,4 @@
-import { createAction } from "@reduxjs/toolkit"
+import { createAction, createReducer } from "@reduxjs/toolkit"
 
 interface Order {
     id: number,
@@ -17,29 +17,29 @@ export const dispatchedItem = createAction<{ id: number }>("itemDispatched");
 
 
 
+const reducer = createReducer([] as Array<Order>, {
+    [addedItem.type]: (orders: Array<Order>, action: Action) => {
+        orders.push({
+            id: orders.length,
+            description: action.payload.description,
+            dispatched: false,
 
-export default function reducer(state: Array<Order> = [], action: Action) {
-    if (action.type == addedItem.type)
-        return [
-            ...state,
-            {
-                id: state.length,
-                description: action.payload.description,
-                dispatched: false,
-            }
-        ];
+        });
+    },
+    [dispatchedItem.type]: (orders: Array<Order>, action: Action) => {
+        const index: number = orders.findIndex(
+            order => order.id === action.payload.id
+        )
+        orders[index].dispatched = true;
+    },
+    [removedItem.type]: (orders: Array<Order>, action: Action) => {
+        const index: number = orders.findIndex(
+            order => order.id === action.payload.id
+        );
 
-    if (action.type == removedItem.type)
-        return state.filter(order => order.id !== action.payload.id);
+        orders.splice(index, 1);
+    }
 
-    if (action.type == dispatchedItem.type)
-        return state.map(order => (
-            order.id !== action.payload.id ? order : {
-                ...order,
-                dispatched: true
-            }
-        ));
+});
 
-    return state;
-
-}
+export default reducer;
