@@ -11,9 +11,11 @@ export interface Action {
     payload: any
 }
 
-export const addedItem = createAction("itemAdded");
-export const removedItem = createAction("itemRemoved");
-export const dispatchedItem = createAction("itemDispatched");
+export const addedItem = createAction<{ description: string }>("itemAdded");
+export const removedItem = createAction<{ id: number }>("itemRemoved");
+export const dispatchedItem = createAction<{ id: number }>("itemDispatched");
+
+
 
 
 export default function reducer(state: Array<Order> = [], action: Action) {
