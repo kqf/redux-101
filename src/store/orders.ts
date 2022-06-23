@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-interface Order {
+export interface Order {
     id: number,
     description: string,
     dispatched: boolean,
