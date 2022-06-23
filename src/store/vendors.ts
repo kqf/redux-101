@@ -21,7 +21,7 @@ const slice = createSlice({
         },
         removeVendor(
             vendors: Array<Vendor>, action: PayloadAction<{ id: number }>) {
-            vendors.filter(vendor => vendor.id !== action.payload.id)
+            return vendors.filter(vendor => vendor.id !== action.payload.id)
         }
     }
 
