@@ -59,6 +59,11 @@ const slice = createSlice({
 export const selectOrdersLength = createSelector(
     (state: RootState) => <Array<Order>>state.entities.orders,
     (orders: Array<Order>) => <number>orders.length
+);
+
+export const selectOrdersByOwner = (owner: string) => createSelector(
+    (state: RootState) => <Array<Order>>state.entities.orders,
+    (orders: Array<Order>) => <Array<Order>>orders.filter(order => order.owner === owner)
 )
 
 export const { addedItem, dispatchedItem, removedItem, assignItemOwner } = slice.actions;
