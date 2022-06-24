@@ -61,7 +61,7 @@ export const selectOrdersLength = createSelector(
     (orders: Array<Order>) => <number>orders.length
 );
 
-export const selectOrdersByOwner = (owner: string) => createSelector(
+export const selectOrdersOf = (owner: string) => createSelector(
     (state: RootState) => <Array<Order>>state.entities.orders,
     (orders: Array<Order>) => <Array<Order>>orders.filter(order => order.owner === owner)
 )
