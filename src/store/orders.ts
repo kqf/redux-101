@@ -49,7 +49,7 @@ const slice = createSlice({
             action: Action<{ id: number, owner: string }>
         ) => {
             const index: number = orders.findIndex(
-                order => order.id = action.payload.id);
+                order => order.id === action.payload.id);
             orders[index].owner = action.payload.owner;
         }
 
@@ -61,5 +61,5 @@ export const selectOrdersLength = createSelector(
     (orders: Array<Order>) => <number>orders.length
 )
 
-export const { addedItem, dispatchedItem, removedItem } = slice.actions;
+export const { addedItem, dispatchedItem, removedItem, assignItemOwner } = slice.actions;
 export default slice.reducer;
