@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "./store";
+
 
 export interface Order {
     id: number,
@@ -45,6 +47,10 @@ const slice = createSlice({
     }
 });
 
+export const selectOrdersLength = createSelector(
+    (state: RootState) => <Array<Order>> state.entities.orders,
+    (orders: Array<Order>) => <number> orders.length
+)
 
 export const { addedItem, dispatchedItem, removedItem } = slice.actions;
 export default slice.reducer;
