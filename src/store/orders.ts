@@ -43,14 +43,22 @@ const slice = createSlice({
             action: Action<{ id: number }>
         ) => {
             return orders.filter(order => order.id !== action.payload.id);
+        },
+        assignItemOwner: (
+            orders: Array<Order>,
+            action: Action<{ id: number, owner: string }>
+        ) => {
+            const index: number = orders.findIndex(
+                order => order.id = action.payload.id);
+            orders[index].owner = action.payload.owner;
         }
 
     }
 });
 
 export const selectOrdersLength = createSelector(
-    (state: RootState) => <Array<Order>> state.entities.orders,
-    (orders: Array<Order>) => <number> orders.length
+    (state: RootState) => <Array<Order>>state.entities.orders,
+    (orders: Array<Order>) => <number>orders.length
 )
 
 export const { addedItem, dispatchedItem, removedItem } = slice.actions;
