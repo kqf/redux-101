@@ -6,6 +6,7 @@ export interface Order {
     id: number,
     description: string,
     dispatched: boolean,
+    owner: string | undefined,
 }
 
 interface Action<T> {
@@ -25,7 +26,7 @@ const slice = createSlice({
                 id: orders.length,
                 description: action.payload.description,
                 dispatched: false,
-
+                owner: undefined,
             });
         },
         dispatchedItem: (
