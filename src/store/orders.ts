@@ -46,5 +46,13 @@ const slice = createSlice({
 });
 
 
+export const selectOrdersLength = createSelector(
+    // @ts-ignore
+    state => state.entities.orders,
+    // @ts-ignore
+    orders => orders.length
+)
+
+
 export const { addedItem, dispatchedItem, removedItem } = slice.actions;
 export default slice.reducer;
