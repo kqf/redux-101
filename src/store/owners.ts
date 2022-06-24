@@ -7,25 +7,25 @@ export interface Owner {
 
 
 const slice = createSlice({
-    name: "owners",
+    name: "Owner",
     initialState: [] as Array<Owner>,
     reducers: {
-        createVendor(
-            vendors: Array<Owner>,
+        createOwner(
+            owners: Array<Owner>,
             action: PayloadAction<{ name: string }>
         ) {
-            vendors.push({
-                id: vendors.length + 1,
+            owners.push({
+                id: owners.length + 1,
                 name: action.payload.name,
             });
         },
-        removeVendor(
-            vendors: Array<Owner>, action: PayloadAction<{ id: number }>) {
-            return vendors.filter(vendor => vendor.id !== action.payload.id)
+        removeOwner(
+            owners: Array<Owner>, action: PayloadAction<{ id: number }>) {
+            return owners.filter(owner => owner.id !== action.payload.id)
         }
     }
 
 });
 
-export const { createVendor, removeVendor } = slice.actions;
+export const { createOwner, removeOwner } = slice.actions;
 export default slice.reducer;
