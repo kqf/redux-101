@@ -6,6 +6,7 @@ export interface Order {
     id: number,
     description: string,
     dispatched: boolean,
+    owner: string | undefined,
 }
 
 interface Action<T> {
@@ -25,7 +26,7 @@ const slice = createSlice({
                 id: orders.length,
                 description: action.payload.description,
                 dispatched: false,
-
+                owner: undefined,
             });
         },
         dispatchedItem: (
@@ -42,15 +43,28 @@ const slice = createSlice({
             action: Action<{ id: number }>
         ) => {
             return orders.filter(order => order.id !== action.payload.id);
+        },
+        assignItemOwner: (
+            orders: Array<Order>,
+            action: Action<{ id: number, owner: string }>
+        ) => {
+            const index: number = orders.findIndex(
+                order => order.id === action.payload.id);
+            orders[index].owner = action.payload.owner;
         }
 
     }
 });
 
 export const selectOrdersLength = createSelector(
-    (state: RootState) => <Array<Order>> state.entities.orders,
-    (orders: Array<Order>) => <number> orders.length
+    (state: RootState) => <Array<Order>>state.entities.orders,
+    (orders: Array<Order>) => <number>orders.length
+);
+
+export const selectOrdersOf = (owner: string) => createSelector(
+    (state: RootState) => <Array<Order>>state.entities.orders,
+    (orders: Array<Order>) => <Array<Order>>orders.filter(order => order.owner === owner)
 )
 
-export const { addedItem, dispatchedItem, removedItem } = slice.actions;
+export const { addedItem, dispatchedItem, removedItem, assignItemOwner } = slice.actions;
 export default slice.reducer;
