@@ -2,7 +2,7 @@ import { combineReducers, configureStore, Store } from "@reduxjs/toolkit";
 import orderReducer from "./orders";
 import vendorReducer from "./vendors";
 import ownerReducer from "./owners";
-import customLogger from "./middleware";
+import { customLogger, toast } from "./middleware";
 
 const store: Store = configureStore({
     reducer: combineReducers({
@@ -14,8 +14,8 @@ const store: Store = configureStore({
     }),
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
-            .concat(customLogger),
-
+            .concat(customLogger)
+            .concat(toast),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

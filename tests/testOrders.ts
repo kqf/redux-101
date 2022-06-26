@@ -28,4 +28,12 @@ describe('Orders', function () {
         assert.strictEqual(selectOrdersLength(store.getState()), 1);
         assert.strictEqual(selectOrdersOf(0)(store.getState()).length, 1);
     });
+
+    it("Middleware catches an error", () => {
+        store.dispatch({
+            type: "error",
+            payload: { message: "this is an error" },
+        });
+    });
+
 });
