@@ -5,7 +5,7 @@ import { createVendor, removeVendor } from "../src/store/vendors";
 const assert = require('assert');
 
 
-describe('Store', function () {
+describe('Vendors', function () {
     it("dispatches the event", () => {
         assert.strictEqual(store.getState().entities.vendors.length, 0);
         store.dispatch(createVendor({ name: "Vendor1" }));

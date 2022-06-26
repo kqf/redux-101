@@ -5,7 +5,7 @@ import { createOwner, removeOwner } from "../src/store/owners";
 const assert = require('assert');
 
 
-describe('Store', function () {
+describe('Owners', function () {
     it("dispatches the event", () => {
         assert.strictEqual(store.getState().entities.owners.length, 0);
         store.dispatch(createOwner({ name: "Bob" }));
