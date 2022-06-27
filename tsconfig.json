@@ -9,5 +9,5 @@
     "moduleResolution": "node",
     "types": ["node", "jest"],
   },
-  "include": ["./src", "./tests/**/*.ts"],
+  "include": ["./src/", "./tests/"],
 }
