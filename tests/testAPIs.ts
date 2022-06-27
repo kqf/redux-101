@@ -19,7 +19,6 @@ describe('expectedData', () => {
                     completed: true
                 }
             });
-        const results = await fetchData();
-        expect(results.data.title).toEqual("The weather is nice");
+        expect((await fetchData()).data.title).toEqual("The weather is nice");
     });
 });
