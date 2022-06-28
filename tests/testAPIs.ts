@@ -10,7 +10,6 @@ const fetchData = async () => {
 
 
 describe('expectedData', () => {
-
     it("checks if API returns expected data", async () => {
         nock('https://api.example.com')
             .get('/')
