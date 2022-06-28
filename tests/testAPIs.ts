@@ -1,11 +1,13 @@
 import axios from "axios";
 import nock from "nock";
+import { expect } from "chai";
 
 const fetchData = async () => {
     const res = await axios.get('https://api.example.com');
     const data = res.data;
     return data;
 }
+
 
 describe('expectedData', () => {
 
@@ -19,6 +21,6 @@ describe('expectedData', () => {
                     completed: true
                 }
             });
-        expect((await fetchData()).data.title).toEqual("The weather is nice");
+        expect((await fetchData()).data.title).to.equal("The weather is nice");
     });
 });
