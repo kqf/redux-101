@@ -1,5 +1,6 @@
 import axios from "axios";
 import nock from "nock";
+import { expect } from "chai";
 
 const fetchData = async () => {
     const res = await axios.get('https://api.example.com');
@@ -7,8 +8,8 @@ const fetchData = async () => {
     return data;
 }
 
-describe('expectedData', () => {
 
+describe('expectedData', () => {
     it("checks if API returns expected data", async () => {
         nock('https://api.example.com')
             .get('/')
@@ -19,6 +20,6 @@ describe('expectedData', () => {
                     completed: true
                 }
             });
-        expect((await fetchData()).data.title).toEqual("The weather is nice");
+        expect((await fetchData()).data.title).to.equal("The weather is nice");
     });
 });
