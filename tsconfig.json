@@ -7,8 +7,8 @@
     "outDir": "dist",
     "declaration": true,
     "moduleResolution": "node",
-    "types": ["node", "jest", "@types/jest"],
-    "typeRoots": ["./src/types", "node_modules/@types"],
+    "types": ["node"],
+    "typeRoots": ["./src/types"],
   },
-  "include": ["./src/"],
+  "include": ["./src"],
 }
