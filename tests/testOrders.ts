@@ -2,7 +2,6 @@ import "mocha";
 import { expect } from "chai";
 import { addedItem, dispatchedItem, removedItem, selectOrdersLength, assignItemOwner, selectOrdersOf } from "../src/store/orders";
 import store from "../src/store/store";
-const assert = require('assert');
 
 describe('Orders', function () {
     it("dispatches the event", () => {
