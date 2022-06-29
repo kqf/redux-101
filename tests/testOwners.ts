@@ -2,18 +2,18 @@ import "mocha";
 import store from "../src/store/store";
 
 import { createOwner, removeOwner } from "../src/store/owners";
-const assert = require('assert');
+import { expect } from "chai";
 
 
 describe('Owners', function () {
     it("dispatches the event", () => {
-        assert.strictEqual(store.getState().entities.owners.length, 0);
+        expect(store.getState().entities.owners.length).equal(0);
         store.dispatch(createOwner({ name: "Bob" }));
 
-        assert.strictEqual(store.getState().entities.owners.length, 1);
-        assert.strictEqual(store.getState().entities.owners[0].id, 1);
+        expect(store.getState().entities.owners.length).equal(1);
+        expect(store.getState().entities.owners[0].id).equal(1);
 
         store.dispatch(removeOwner({ id: 1 }));
-        assert.strictEqual(store.getState().entities.owners.length, 0);
+        expect(store.getState().entities.owners.length).equal(0);
     });
 });
