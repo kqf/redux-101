@@ -3,8 +3,6 @@ import "mocha";
 import store from "../src/store/store";
 
 import { createVendor, removeVendor } from "../src/store/vendors";
-const assert = require('assert');
-
 
 describe('Vendors', function () {
     it("dispatches the event", () => {
