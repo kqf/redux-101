@@ -11,14 +11,14 @@ const api: Middleware<{}, RootState> = store => next => async action => {
     }
     try {
         const response = await axios.request({
-            baseUrl: baseUrl,
+            baseURL: baseUrl,
             url: action.payload.url,
             method: action.payload.method,
             data: action.payload.data,
         })
         store.dispatch(actions.apiCallSuccess(response.data));
     } catch (error) {
-        store.dispatch(actions.apiCallSuccess());
+        store.dispatch(actions.apiCallSuccess(error));
     }
 
 }
