@@ -18,7 +18,7 @@ const api: Middleware<{}, RootState> = store => next => async action => {
         })
         store.dispatch(actions.apiCallSuccess(response.data));
     } catch (error) {
-        store.dispatch(actions.apiCallSuccess());
+        store.dispatch(actions.apiCallSuccess(error));
     }
 
 }
