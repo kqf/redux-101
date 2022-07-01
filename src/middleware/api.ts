@@ -22,3 +22,5 @@ const api: Middleware<{}, RootState> = store => next => async action => {
     }
 
 }
+
+export default api;

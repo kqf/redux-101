@@ -3,6 +3,7 @@ import orderReducer from "./orders";
 import vendorReducer from "./vendors";
 import ownerReducer from "./owners";
 import { customLogger, toast } from "./middleware";
+import api from "../middleware/api";
 
 const store: Store = configureStore({
     reducer: combineReducers({
@@ -15,7 +16,8 @@ const store: Store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
             .concat(customLogger)
-            .concat(toast),
+            .concat(toast)
+            .concat(api),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
