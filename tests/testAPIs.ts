@@ -17,12 +17,14 @@ describe('works with fetching data', () => {
                 }
             });
 
-        store.dispatch(apiCallBegan({
-            baseURL: "https://api.example.com",
-            url: "test",
-            method: "GET",
-            data: {},
-        }));
-        // expect((await fetchData()).data.title).to.equal("The weather is nice");
+        store.dispatch(
+            apiCallBegan({
+                baseURL: "https://api.example.com",
+                url: "test",
+                method: "GET",
+                data: undefined,
+            }));
+
+        console.log(store);
     });
 });
