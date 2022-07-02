@@ -5,7 +5,7 @@ import ownerReducer from "./owners";
 import { customLogger, toast } from "./middleware";
 import api from "./middleware/api";
 
-const store: Store = configureStore({
+export const buildStore: () => Store = () => configureStore({
     reducer: combineReducers({
         entities: combineReducers({
             orders: orderReducer,
@@ -20,5 +20,7 @@ const store: Store = configureStore({
             .concat(api),
 });
 
+
+const store: Store = buildStore()
 export type RootState = ReturnType<typeof store.getState>;
 export default store;
