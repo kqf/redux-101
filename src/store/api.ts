@@ -5,6 +5,7 @@ export interface APICall {
     url: string,
     method: string,
     data: any,
+    onSuccess: string,
 }
 
 export const apiCallBegan = createAction<APICall>("api/CallBegan");
