@@ -1,6 +1,6 @@
 import { Middleware } from "redux"
-import { RootState } from "../store/store"
-import * as actions from "../store/api"
+import { RootState } from "../store"
+import * as actions from "../api"
 import axios from "axios"
 
 export const baseUrl: string = "https://api.example.com";
