@@ -6,7 +6,7 @@ import axios from "axios"
 export const baseUrl: string = "https://api.example.com";
 
 const api: Middleware<{}, RootState> = store => next => async action => {
-    if (action.type !== actions.apiCallBegan) {
+    if (action.type !== actions.apiCallBegan.type) {
         return next(action)
     }
     try {
@@ -18,7 +18,7 @@ const api: Middleware<{}, RootState> = store => next => async action => {
         })
         store.dispatch(actions.apiCallSuccess(response.data));
     } catch (error) {
-        store.dispatch(actions.apiCallSuccess(error));
+        store.dispatch(actions.apiCallFailed(error as string));
     }
 
 }
