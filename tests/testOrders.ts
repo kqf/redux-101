@@ -1,6 +1,6 @@
-import "mocha";
 import { expect } from "chai";
-import { addedItem, dispatchedItem, removedItem, selectOrdersLength, assignItemOwner, selectOrdersOf } from "../src/store/orders";
+import "mocha";
+import { addedItem, assignItemOwner, dispatchedItem, removedItem, selectOrdersLength, selectOrdersOf } from "../src/store/orders";
 import { buildStore } from "../src/store/store";
 
 describe('Orders', function () {
