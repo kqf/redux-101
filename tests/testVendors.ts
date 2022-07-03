@@ -1,10 +1,11 @@
 import { expect } from "chai";
 import "mocha";
-import store from "../src/store/store";
+import { buildStore } from "../src/store/store";
 
 import { createVendor, removeVendor } from "../src/store/vendors";
 
 describe('Vendors', function () {
+    const store = buildStore();
     it("dispatches the event", () => {
         expect(store.getState().entities.vendors.length).to.equal(0);
         store.dispatch(createVendor({ name: "Vendor1" }));
