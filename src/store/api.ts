@@ -1,13 +1,32 @@
-import { createAction } from "@reduxjs/toolkit";
+import { Middleware } from "redux"
+import { RootState } from "./store"
+import * as actions from "./api"
+import axios from "axios"
+import { PayloadAction } from "@reduxjs/toolkit";
 
-export interface APICall {
-    baseURL: string,
-    url: string,
-    method: string,
-    data: any,
-    onSuccess: string,
+const api: Middleware<{}, RootState> = store => next => async action => {
+    if (action.type !== actions.apiCallBegan.type) {
+        return next(action)
+    }
+
+    const callbeganAction = action as PayloadAction<actions.APICall>;
+    try {
+        const response = await axios.request({
+            baseURL: callbeganAction.payload.baseURL,
+            url: callbeganAction.payload.url,
+            method: callbeganAction.payload.method,
+            data: callbeganAction.payload.data,
+        })
+        store.dispatch({
+            "type": callbeganAction.payload.onSuccess,
+            "payload": response.data,
+        })
+        store.dispatch(actions.apiCallSuccess(response.data));
+
+    } catch (error) {
+        store.dispatch(actions.apiCallFailed("Failed"));
+    }
+
 }
 
-export const apiCallBegan = createAction<APICall>("api/CallBegan");
-export const apiCallSuccess = createAction<any>("api/CallBegan");
-export const apiCallFailed = createAction<string>("api/CallFailed");
+export default api;

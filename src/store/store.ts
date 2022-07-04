@@ -3,7 +3,7 @@ import orderReducer from "./orders";
 import vendorReducer from "./vendors";
 import ownerReducer from "./owners";
 import { customLogger, toast } from "./middleware";
-import api from "./middleware/api";
+import api from "./api";
 
 export const buildStore: () => Store = () => configureStore({
     reducer: combineReducers({
