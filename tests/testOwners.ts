@@ -1,11 +1,12 @@
 import "mocha";
-import store from "../src/store/store";
+import { buildStore } from "../src/store/store";
 
 import { createOwner, removeOwner } from "../src/store/owners";
 import { expect } from "chai";
 
 
 describe('Owners', function () {
+    const store = buildStore();
     it("dispatches the event", () => {
         expect(store.getState().entities.owners.length).equal(0);
         store.dispatch(createOwner({ name: "Bob" }));

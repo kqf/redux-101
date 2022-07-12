@@ -1,9 +1,7 @@
-import axios from "axios";
 import nock from "nock";
-import { expect } from "chai";
 import { apiCallBegan } from '../src/store/api';
-import { receiveVendor } from "../src/store/vendors";
 import { buildStore } from "../src/store/store";
+import { receiveVendor } from "../src/store/vendors";
 
 
 describe('works with fetching data', () => {

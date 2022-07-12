@@ -4,6 +4,7 @@ import orderReducer from "./orders";
 import ownerReducer from "./owners";
 import vendorReducer from "./vendors";
 
+
 export const buildStore: () => Store = () => configureStore({
     reducer: combineReducers({
         entities: combineReducers({

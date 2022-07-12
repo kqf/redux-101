@@ -1,9 +1,11 @@
-import "mocha";
 import { expect } from "chai";
-import { addedItem, dispatchedItem, removedItem, selectOrdersLength, assignItemOwner, selectOrdersOf } from "../src/store/orders";
-import store from "../src/store/store";
+import "mocha";
+import { addedItem, assignItemOwner, dispatchedItem, removedItem, selectOrdersLength, selectOrdersOf } from "../src/store/orders";
+import { buildStore } from "../src/store/store";
 
 describe('Orders', function () {
+    const store = buildStore();
+
     it("dispatches the event", () => {
         expect(selectOrdersLength(store.getState())).to.equal(0);
         store.dispatch(addedItem({ description: "test item1" }));
